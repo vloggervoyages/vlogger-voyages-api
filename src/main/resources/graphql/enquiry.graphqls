@@ -1,0 +1,27 @@
+type Enquiry {
+    id: ID
+    tourId: ID
+    name: String
+    email: String
+    phone: String
+    message: String
+    source: String
+    createdAt: String
+}
+
+input EnquiryInput {
+    tourId: ID
+    name: String!
+    email: String
+    phone: String!
+    message: String
+    source: String
+}
+
+extend type Query {
+    enquiries: [Enquiry]
+}
+
+extend type Mutation {
+    submitEnquiry(input: EnquiryInput): Enquiry
+}

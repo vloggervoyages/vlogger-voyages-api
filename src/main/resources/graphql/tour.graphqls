@@ -1,0 +1,57 @@
+type Tour {
+    id: ID
+    title: String
+    slug: String
+    destination: String
+    duration: String
+    startingPrice: Float
+    description: String
+    status: String
+    startDate: String
+    endDate: String
+    itineraryDays: [ItineraryDay]
+    pricing: [Pricing]
+    media: [Media]
+}
+
+type ItineraryDay {
+    id: ID
+    tourId: ID
+    dayNumber: Int
+    title: String
+    description: String
+    startTime: String
+    endTime: String
+}
+
+type Pricing {
+    id: ID
+    tourId: ID
+    priceInr: Float
+    pricingLabel: String
+    inclusions: String
+    exclusions: String
+}
+
+type Media {
+    id: ID
+    tourId: ID
+    mediaType: String
+    mediaUrl: String
+    position: Int
+}
+
+type Testimonial {
+    id: ID
+    name: String
+    photoUrl: String
+    review: String
+    rating: Int
+    platform: String
+}
+
+extend type Query {
+    tours: [Tour]
+    tour(slug: String!): Tour
+    testimonials: [Testimonial]
+}
